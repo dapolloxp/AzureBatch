@@ -2,9 +2,9 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "batchAccountName": {
+    "batchAccountName": 
+    {
       "type": "string",
-      "defaultValue": "",
       "metadata": {
         "description": "Batch Account Name"
       },
@@ -37,10 +37,11 @@
     }
   },
 
-  "resources": [
+  "resources": 
+  [
     {
       "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountname')]",
+      "name": "[parameters('storageAccountname')]",
       "apiVersion": "2016-01-01",
       "location": "[parameters('location')]",
       "comments": "This storage account is used to associate to a batch account",
@@ -53,17 +54,18 @@
       },
       "properties": {}
     },
+
     {
       "type": "Microsoft.Batch/batchAccounts",
       "name": "[parameters('batchAccountName')]",
-      "apiVersion": "2015-12-01",
+      "apiVersion": "2018-12-01",
       "location": "[parameters('location')]",
       "tags": {
         "ObjectName": "[parameters('batchAccountName')]"
       },
       "properties": {
         "autoStorage": {
-          "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+          "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
         }
       },
       "dependsOn": [
