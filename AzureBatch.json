@@ -8,7 +8,12 @@
       "metadata": {
         "description": "Batch Account Name"
       },
-      "storageAccountName" : ""
+      "storageAccountName" : 
+      {
+        "type" : "string",
+        "metadata" : {
+          "description": "Azure Storage Account Name"
+        }
     },
     "storageAccountsku": {
       "type": "string",
@@ -44,7 +49,7 @@
       },
       "kind": "Storage",
       "tags": {
-        "ObjectName": "[variables('storageAccountName')]"
+        "ObjectName": "[parameters('storageAccountName')]"
       },
       "properties": {}
     },
