@@ -11,24 +11,31 @@
       "storageAccountName" : 
       {
         "type" : "string",
-        "metadata" : {
+        "metadata" : 
+        {
           "description": "Azure Storage Account Name"
+        
         }
+      }
     },
-    "storageAccountsku": {
+    "storageAccountsku": 
+    {
       "type": "string",
       "defaultValue": "Standard_LRS",
-      "allowedValues": [
+      "allowedValues": 
+      [
         "Standard_LRS",
         "Standard_GRS",
         "Standard_ZRS",
         "Premium_LRS"
       ],
-      "metadata": {
+      "metadata": 
+      {
         "description": "Storage Account type"
       }
     },
-    "location": {
+    "location": 
+    {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
@@ -49,9 +56,6 @@
         "name": "[parameters('storageAccountsku')]"
       },
       "kind": "Storage",
-      "tags": {
-        "ObjectName": "[parameters('storageAccountName')]"
-      },
       "properties": {}
     },
 
@@ -68,17 +72,21 @@
           "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
         }
       },
-      "dependsOn": [
+      "dependsOn": 
+      [
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
       ]
     }
   ],
-  "outputs": {
-    "storageAccountName": {
+  "outputs": 
+  {
+    "storageAccountName": 
+    {
       "type": "string",
       "value": "[parameters('storageAccountName')]"
     },
-    "batchAccountName": {
+    "batchAccountName": 
+    {
       "type": "string",
       "value": "[parameters('batchAccountName')]"
     }
